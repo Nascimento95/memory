@@ -1,0 +1,42 @@
+body{
+    background-image: url('image/backgroundDragonball.svg');
+}
+
+.head{
+    display: flex ;
+    justify-content: center;
+    /* height: 100vh; */
+}
+.ball{
+    width: 30px;
+    height: 30px;
+}
+.sangoku-img{
+    width: 100px;
+    height: 100px;
+}
+.body-card{
+    height: 100vh;
+}
+
+.cart1{
+    background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+    height: 300px;
+    border-radius: 20px;
+    /* transform: rotate(-5deg) */
+}
+.cart2{
+    background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+    height: 300px;
+    border-radius: 20px;
+}
+.cart3{
+    background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+    height: 300px;
+    border-radius: 20px;
+}
+.cart4{
+    background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+    height: 300px;
+    border-radius: 20px;
+}
