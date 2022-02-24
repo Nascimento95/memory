@@ -3,21 +3,83 @@ let cart1 = document.querySelector('.cart1')
 let cart2 = document.querySelector('.cart2')
 let cart3 = document.querySelector('.cart3')
 let cart4 = document.querySelector('.cart4')
+let cart5 = document.querySelector('.cart5')
+let cart6 = document.querySelector('.cart6')
 let compteur = document.querySelector('.point')
 // ma liste de personnage
-let arrayImage = ["sangoku" , "vegeta"]
+let characters = [
+    {   
+        id: 0,
+        name: "sangoku",
+        image: "https://i.pinimg.com/474x/3b/7a/9b/3b7a9b76d75738cb83dd8e984a0fb44a.jpg",
+    },
+    {
+        id: 1,
+        name: "vegeta",
+        image: "https://downloadwap.com/thumbs2/wallpapers/p2/new/12/2uALs5Mh.jpg",
+    },
+    {
+        id: 2,
+        name: "krilin",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkM1WbrIpoJcly4XfzCigUm_q-iGFed2v6aA&usqp=CAU",
+    },
+]
+console.log("mes perso" , characters)
+// melange le tableau de cart
+const shuffle = cards => {
+    for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+    return cards
+}
+
+// je créé mon tableu de cart
+const generateAllCards = () => {
+    let allCards = [...characters, ...characters]
+    console.log("allCard", allCards)
+    return shuffle(allCards)
+}
 
 // mon compteur de point
 let point = 0
-
+// pour changer mes carte d'endroit a chaque partie
+let imageNumRandom 
+let numRandom 
+// // function qui assigne aléatoirement  le nom des personnage au cart pour faire la comparaison
+let combienDeFoisSortLeChiffre0 = []
+let combienDeFoisSortLeChiffre1 = []
+let combienDeFoisSortLeChiffre2 = []
+function notSameNumRandom(cart, num) {
+    do {
+        numRandom = random()
+        console.log("al'interieur",numRandom)
+        
+    } while (numRandom == imageNumRandom );
+    //ici on stock le dernier numero rundom sortie pour pas quil resort une autre fois
+    imageNumRandom = numRandom
+    cart.className= `cart${num} ` + characters[imageNumRandom] + " " + characters[imageNumRandom]
+    // console.log(cart)
+}
+// notSameNumRandom(cart1, 1)
+// // console.log(" 1le log de num random",imageNumRandom)
+// notSameNumRandom(cart2, 2)
+// // console.log("2le log de num random",imageNumRandom)
+// notSameNumRandom(cart3, 3)
+// // console.log("3le log de num random",imageNumRandom)
+// notSameNumRandom(cart4, 4)
+// // console.log("4le log de num random",imageNumRandom)
+// notSameNumRandom(cart5, 5)
+// notSameNumRandom(cart6, 6)
 //mon compteur html
 compteur.textContent = point 
 
 // j'assigne le nom des personnage au cart pour faire la comparaison
-cart1.className= "cart1 " + arrayImage[0]
-cart2.className= "cart2 " + arrayImage[1]
-cart3.className= "cart3 " + arrayImage[0]
-cart4.className= "cart4 " + arrayImage[1]
+// characters.map((personnage, index) => )
+// cart1.className= "cart1 " + characters[0]
+// cart2.className= "cart2 " + characters[1]
+// cart3.className= "cart3 " + characters[0]
+// cart4.className= "cart4 " + characters[1]
 
 let toggle ;
 
@@ -47,10 +109,12 @@ let toggle ;
 //     moveCard(cart3)
 //     moveCard2(cart4)
 // }
+// function qui renvoie un numéro aléatoire 
+const random = () => Math.floor(Math.random() * characters.length)
 
 // function qui change le background de la carte
 let changeImage = (cart, image) => {
-    console.log("je clik" , toggle)
+    // console.log("je clik" , toggle)
     toggle = false
     if (toggle) {
         // console.log("condi tru",toggle)
@@ -72,22 +136,29 @@ let changeImage = (cart, image) => {
         // console.log("condi false",toggle)
     }
 }
+console.log(cart1.classList)
 // toggle = false
 // met event onclik qui change la carte 
 cart1.addEventListener("click",() =>{
-    changeImage(cart1, "https://i.pinimg.com/474x/3b/7a/9b/3b7a9b76d75738cb83dd8e984a0fb44a.jpg")  
+    changeImage(cart1, cart1.classList[2])  
 })
 
 cart2.addEventListener("click", () => {
-    changeImage(cart2, "https://downloadwap.com/thumbs2/wallpapers/p2/new/12/2uALs5Mh.jpg")
+    changeImage(cart2, cart2.classList[2])
 })
 
 cart3.addEventListener("click" , () => {
-    changeImage(cart3, "https://i.pinimg.com/474x/3b/7a/9b/3b7a9b76d75738cb83dd8e984a0fb44a.jpg")
+    changeImage(cart3, cart3.classList[2])
 })
 
 cart4.addEventListener('click', () => {
-    changeImage(cart4,"https://downloadwap.com/thumbs2/wallpapers/p2/new/12/2uALs5Mh.jpg" )
+    changeImage(cart4, cart4.classList[2])
+})
+cart5.addEventListener('click', () => {
+    changeImage(cart5, cart5.classList[2])
+})
+cart6.addEventListener('click', () => {
+    changeImage(cart6, cart6.classList[2])
 })
 
 // les tableau qui contient mes classnam de cart pour comparé
@@ -102,7 +173,7 @@ let firstCardSelected ;
 let secondCardSelected ; 
 let numSelected = 1
 async function cardSelected(cart1){
-    console.log(cart1, "ma carte sélectionner")
+    // console.log(cart1, "ma carte sélectionner")
     if(numSelected === 1){
         // console.log(1)
         firstCardSelected = cart1
@@ -164,7 +235,7 @@ function condition( cart1 , cart2){
     // console.log("dans ma condi" , cart2.classList[1])
 
     if(cart1.classList.contains("sangoku") && cart2.classList.contains("sangoku")){
-        console.log("je suis dans ma conparaison")
+        // console.log("je suis dans ma conparaison")
         setTimeout(() => {
             cart1.style.visibility = "hidden"
             cart2.style.visibility = "hidden"
@@ -174,7 +245,7 @@ function condition( cart1 , cart2){
         compteur.textContent = point
     }
     if(cart1.classList.contains("vegeta") && cart2.classList.contains("vegeta")){
-        console.log("je suis dans ma conparaison")
+        // console.log("je suis dans ma conparaison")
         setTimeout(() => {
             cart1.style.visibility = "hidden"
             cart2.style.visibility = "hidden"
@@ -184,16 +255,28 @@ function condition( cart1 , cart2){
         compteur.textContent = point
         console.log("le toggle dans ma condi",toggle)
     }
+    if(cart1.classList.contains("krilin") && cart2.classList.contains("krilin")){
+        // console.log("je suis dans ma conparaison")
+        setTimeout(() => {
+            cart1.style.visibility = "hidden"
+            cart2.style.visibility = "hidden"
+        }, 1000);
+        toggle = false
+        point += 1
+        compteur.textContent = point
+        // console.log("le toggle dans ma condi",toggle)
+    }
+
     if (cart1.classList[1] != cart2.classList[1]) {
         setTimeout(() => {
             cart1.style.backgroundImage = "url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp)"
             cart2.style.backgroundImage = "url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp)"
         },1000)
 
-        console.log("dans ma condition diferent de ")
+        // console.log("dans ma condition diferent de ")
     }
     setTimeout(() => {
-        if(point == arrayImage.length){
+        if(point == characters.length){
             alert("partie terminé")
         }
     }, 2000);
