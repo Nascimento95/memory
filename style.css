@@ -1,19 +1,24 @@
 body{
     background-image: url('image/backgroundDragonball.svg');
 }
-
+.title{
+    font-size: 80px;
+}
+.name-point{
+    font-size: 30px;
+}
 .head{
     display: flex ;
     justify-content: center;
     /* height: 100vh; */
 }
 .ball{
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
 }
 .sangoku-img{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 .body-card{
     height: 100vh;
@@ -21,32 +26,68 @@ body{
 
 .cart1{
     background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+    background-size: cover;
     height: 300px;
     border-radius: 20px;
     /* transform: rotate(-5deg) */
 }
 .cart2{
     background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+    background-size: cover;
     height: 300px;
     border-radius: 20px;
 }
 .cart3{
     background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+    background-size: cover;
     height: 300px;
     border-radius: 20px;
 }
 .cart4{
     background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+    background-size: cover;
     height: 300px;
     border-radius: 20px;
 }
 .cart5{
     background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+    background-size: cover;
     height: 300px;
     border-radius: 20px;
 }
 .cart6{
     background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+    background-size: cover;
     height: 300px;
     border-radius: 20px;
+}
+.cart7{
+    background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+    background-size: cover;
+    height: 300px;
+    border-radius: 20px;
+}
+.cart8{
+    background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+    background-size: cover;
+    height: 300px;
+    border-radius: 20px;
+}
+
+.win{
+    font-size: 200px;
+    text-align: center;
+    /* color: green; */
+}
+.rejouer{
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: green;
+}
+.fini{
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: red;
 }

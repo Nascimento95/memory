@@ -1,11 +1,19 @@
-// met carte selectionner
+// mes cartes selectionners et mon compteur de point
 let cart1 = document.querySelector('.cart1')
 let cart2 = document.querySelector('.cart2')
 let cart3 = document.querySelector('.cart3')
 let cart4 = document.querySelector('.cart4')
 let cart5 = document.querySelector('.cart5')
 let cart6 = document.querySelector('.cart6')
+let cart7 = document.querySelector('.cart7')
+let cart8 = document.querySelector('.cart8')
+let win   = document.querySelector('.win')
+let timers = document.querySelector('.timer')
 let compteur = document.querySelector('.point')
+let restart = document.createElement('button')
+let finish = document.createElement('button')
+
+
 // ma liste de personnage
 let characters = [
     {   
@@ -23,8 +31,48 @@ let characters = [
         name: "krilin",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkM1WbrIpoJcly4XfzCigUm_q-iGFed2v6aA&usqp=CAU",
     },
+    {
+        id: 3,
+        name: "bulma",
+        image: "https://i.skyrock.net/6383/52976383/pics/2142262707_small_1.jpg",
+    },
 ]
-console.log("mes perso" , characters)
+let time = 10
+if(time > 0){
+    let myInterval = setInterval(() => {
+        time -= 1
+        timers.textContent = time
+        if(time <= 0){
+            console.log("dans la condition")
+            clearInterval(myInterval)
+            time = 0
+            if(time === 0 && point < 4) {
+                setTimeout(() => {
+                    cart1.remove()
+                    cart2.remove()
+                    cart3.remove()
+                    cart4.remove()
+                    cart5.remove()
+                    cart6.remove()
+                    cart7.remove()
+                    cart8.remove()
+                    restart.className = "rejouer"
+                    restart.textContent = "Rejouer"
+                    document.querySelector('.win').after(restart)
+                    win.textContent = 'Time out looser'
+                    win.style.color = "red"
+                }, 1000);
+            }
+        }
+    }, 1000);
+}
+console.log(time)
+const timer = () => {
+    
+    
+}
+// timer()
+
 // melange le tableau de cart
 const shuffle = cards => {
     for (let i = cards.length - 1; i > 0; i--) {
@@ -34,90 +82,68 @@ const shuffle = cards => {
     return cards
 }
 
-// je créé mon tableu de cart
-const generateAllCards = () => {
+// je créé mon tableu de cart en double et je pousse ce tableau dans shuffle
+const generateAllCards = (characters) => {
     let allCards = [...characters, ...characters]
     console.log("allCard", allCards)
-    return shuffle(allCards)
+    return allCards
 }
-
+let mesCarteEnDouble = generateAllCards(characters)
+let carteMelanger = shuffle(mesCarteEnDouble)
+// j'assigne le nom des personnage au cart pour faire la comparaison + url de l'image pour la pasé dans une function
+cart1.className = `cart1 ${carteMelanger[0].name} ${carteMelanger[0].image}`
+cart2.className = `cart2 ${carteMelanger[1].name} ${carteMelanger[1].image}`
+cart3.className = `cart3 ${carteMelanger[2].name} ${carteMelanger[2].image}`
+cart4.className = `cart4 ${carteMelanger[3].name} ${carteMelanger[3].image}`
+cart5.className = `cart5 ${carteMelanger[4].name} ${carteMelanger[4].image}`
+cart6.className = `cart6 ${carteMelanger[5].name} ${carteMelanger[5].image}`
+cart7.className = `cart7 ${carteMelanger[6].name} ${carteMelanger[6].image}`
+cart8.className = `cart8 ${carteMelanger[7].name} ${carteMelanger[7].image}`
 // mon compteur de point
 let point = 0
 // pour changer mes carte d'endroit a chaque partie
 let imageNumRandom 
 let numRandom 
-// // function qui assigne aléatoirement  le nom des personnage au cart pour faire la comparaison
-let combienDeFoisSortLeChiffre0 = []
-let combienDeFoisSortLeChiffre1 = []
-let combienDeFoisSortLeChiffre2 = []
-function notSameNumRandom(cart, num) {
-    do {
-        numRandom = random()
-        console.log("al'interieur",numRandom)
-        
-    } while (numRandom == imageNumRandom );
-    //ici on stock le dernier numero rundom sortie pour pas quil resort une autre fois
-    imageNumRandom = numRandom
-    cart.className= `cart${num} ` + characters[imageNumRandom] + " " + characters[imageNumRandom]
-    // console.log(cart)
-}
-// notSameNumRandom(cart1, 1)
-// // console.log(" 1le log de num random",imageNumRandom)
-// notSameNumRandom(cart2, 2)
-// // console.log("2le log de num random",imageNumRandom)
-// notSameNumRandom(cart3, 3)
-// // console.log("3le log de num random",imageNumRandom)
-// notSameNumRandom(cart4, 4)
-// // console.log("4le log de num random",imageNumRandom)
-// notSameNumRandom(cart5, 5)
-// notSameNumRandom(cart6, 6)
-//mon compteur html
-compteur.textContent = point 
 
-// j'assigne le nom des personnage au cart pour faire la comparaison
-// characters.map((personnage, index) => )
-// cart1.className= "cart1 " + characters[0]
-// cart2.className= "cart2 " + characters[1]
-// cart3.className= "cart3 " + characters[0]
-// cart4.className= "cart4 " + characters[1]
+compteur.textContent = point 
 
 let toggle ;
 
-// let interval1;
-// let interval2
+let interval1;
+let interval2
 
-// function moveCard(card){
-//     interval1 = setInterval(() => {
-//     card.style.transform = "rotate(5deg)"
-//     }, 1000);
-//     interval2 = setInterval(() => {
-//         card.style.transform = "rotate(-5deg)"
-//     }, 1200);
-// }
-// //les function qui font bouger mes cartes
-// function moveCard2(card) {
-//     interval2 = setInterval(() => {
-//         card.style.transform = "rotate(-5deg)"
-//     }, 1000);
-//     interval1 = setInterval(() => {
-//     card.style.transform = "rotate(5deg)"
-//     }, 1200);
-// }
-// if(!toggle){
-//     moveCard(cart1)
-//     moveCard2(cart2)
-//     moveCard(cart3)
-//     moveCard2(cart4)
-// }
-// function qui renvoie un numéro aléatoire 
-const random = () => Math.floor(Math.random() * characters.length)
+//les function qui font bouger mes cartes
+function moveCard(card){
+    interval1 = setInterval(() => {
+    card.style.transform = "rotate(5deg)"
+    }, 1000);
+    interval2 = setInterval(() => {
+        card.style.transform = "rotate(-5deg)"
+    }, 1200);
+}
+function moveCard2(card) {
+    interval2 = setInterval(() => {
+        card.style.transform = "rotate(-5deg)"
+    }, 1000);
+    interval1 = setInterval(() => {
+    card.style.transform = "rotate(5deg)"
+    }, 1200);
+}
+if(!toggle){
+    moveCard(cart1)
+    moveCard2(cart2)
+    moveCard(cart3)
+    moveCard2(cart4)
+    moveCard(cart5)
+    moveCard2(cart6)
+    moveCard(cart7)
+    moveCard2(cart8)
+}
 
 // function qui change le background de la carte
 let changeImage = (cart, image) => {
-    // console.log("je clik" , toggle)
     toggle = false
     if (toggle) {
-        // console.log("condi tru",toggle)
         cart.style.backgroundImage = "url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp)"
         setTimeout(() => {
             toggle = false
@@ -129,28 +155,20 @@ let changeImage = (cart, image) => {
         cart.style.backgroundImage = `url(${image})`
         cardSelected(cart)
         setTimeout(() => {
-            // console.log("dubut du time",toggle)
             toggle = true
-            // console.log("dans mon time pse le toogle a tru",toggle)
         }, 3000);
-        // console.log("condi false",toggle)
     }
 }
-console.log(cart1.classList)
-// toggle = false
 // met event onclik qui change la carte 
 cart1.addEventListener("click",() =>{
     changeImage(cart1, cart1.classList[2])  
 })
-
 cart2.addEventListener("click", () => {
     changeImage(cart2, cart2.classList[2])
 })
-
 cart3.addEventListener("click" , () => {
     changeImage(cart3, cart3.classList[2])
 })
-
 cart4.addEventListener('click', () => {
     changeImage(cart4, cart4.classList[2])
 })
@@ -160,81 +178,35 @@ cart5.addEventListener('click', () => {
 cart6.addEventListener('click', () => {
     changeImage(cart6, cart6.classList[2])
 })
-
-// les tableau qui contient mes classnam de cart pour comparé
-let array =[]
-// console.log(array.length)
-// let cartselec1 = ""
-// let cartselec2 = ""
-let cart =[]
-
-// function qui me dit quel cart est selectionner 
+cart7.addEventListener('click', () => {
+    changeImage(cart7, cart7.classList[2])
+})
+cart8.addEventListener('click', () => {
+    changeImage(cart8, cart8.classList[2])
+})
+// function qui me dit quel cart est selectionner et les deux variable stock la premier carte selected et la deuxième
 let firstCardSelected ;
 let secondCardSelected ; 
 let numSelected = 1
 async function cardSelected(cart1){
-    // console.log(cart1, "ma carte sélectionner")
-    if(numSelected === 1){
-        // console.log(1)
+    if (numSelected === 1) {
         firstCardSelected = cart1
     }
     numSelected += 1
-    if(numSelected === 3){
-        // console.log(2)
+    if (numSelected === 3) {
         secondCardSelected = await cart1
         condition(firstCardSelected, secondCardSelected)
         numSelected -= 2
-        // console.log("on remet a l'origin ",numSelected)
-
     }
-    // console.log("premier carte",firstCardSelected)
-    // console.log(" seconde carte",secondCardSelected)
-    // if(firstCardSelected.classList.contains("sangoku") && secondCardSelected.classList.contains("sangoku")){
-    //     console.log("je suis dans ma conparaison")
-    //     // firstCardSelected.style.visibility = "hidden"
-    //     // secondCardSelected.style.visibility = "hidden"
-    // }
-    // console.log("premier carte",firstCardSelected)
-    // cart1.style.visibility = "hidden"
-    // console.log("je suis dans cardselected")
-    //push la valeur du click et après si mon array est egal a 2 je le vide 
-    // console.log("log de ma carte",cart1)
-    // array.unshift(cart1.classList[1])
-    // cartselec1 = cart1.classList[1]
-
-    // cart.push(cart1.classList[0])
-    // console.log(cart)
-    // // console.log("mon cart",cartselec1)
-    
-    // console.log(" mon tableau",array)
-    
-    // if(array[0] === array[1]) {
-    //     console.log("ma condi de egal value")
-    //     if(cart[0] == cart1.classList[0]) {
-    //         cart1.style.visibility = "hidden"
-    //     }
-    //     point += 1
-    //     compteur.textContent = point 
-    //     array.splice(0,2)
-    //     // cart[0].style.visibility = "hidden"
-    //     // cart[1].style.visibility = "hidden"
-    // }
-    // if(cart1.classList.contains("sangoku") && cart2.classList.contains("sangoku")){
-    // // console.log("log de cart",cart1,cart2)
-    //     cart1.style.visibility = "hidden"
-    //     cart2.style.visibility = "hidden"
-    //     point += 1
-    //     compteur.textContent = point 
-    //     console.log(point)
-    // }
 }
+function rejouer(valeur) {
+    return console.log(valeur,"je suis dans la function au click")
+}
+
 
 // function ou sont toute mes condition si le joueur gagner / si les carte son pareil ou pas 
 function condition( cart1 , cart2){
-    // console.log("dans ma condi",cart1.classList[1])
-    // console.log("dans ma condi" , cart2.classList[1])
-
-    if(cart1.classList.contains("sangoku") && cart2.classList.contains("sangoku")){
+    if (cart1.classList.contains("sangoku") && cart2.classList.contains("sangoku")) {
         // console.log("je suis dans ma conparaison")
         setTimeout(() => {
             cart1.style.visibility = "hidden"
@@ -244,7 +216,7 @@ function condition( cart1 , cart2){
         point += 1
         compteur.textContent = point
     }
-    if(cart1.classList.contains("vegeta") && cart2.classList.contains("vegeta")){
+    if (cart1.classList.contains("vegeta") && cart2.classList.contains("vegeta")) {
         // console.log("je suis dans ma conparaison")
         setTimeout(() => {
             cart1.style.visibility = "hidden"
@@ -255,7 +227,18 @@ function condition( cart1 , cart2){
         compteur.textContent = point
         console.log("le toggle dans ma condi",toggle)
     }
-    if(cart1.classList.contains("krilin") && cart2.classList.contains("krilin")){
+    if (cart1.classList.contains("krilin") && cart2.classList.contains("krilin")) {
+        // console.log("je suis dans ma conparaison")
+        setTimeout(() => {
+            cart1.style.visibility = "hidden"
+            cart2.style.visibility = "hidden"
+        }, 1000);
+        toggle = false
+        point += 1
+        compteur.textContent = point
+        // console.log("le toggle dans ma condi",toggle)
+    }
+    if (cart1.classList.contains("bulma") && cart2.classList.contains("bulma")) {
         // console.log("je suis dans ma conparaison")
         setTimeout(() => {
             cart1.style.visibility = "hidden"
@@ -275,16 +258,24 @@ function condition( cart1 , cart2){
 
         // console.log("dans ma condition diferent de ")
     }
+    
+
     setTimeout(() => {
         if(point == characters.length){
-            alert("partie terminé")
+            win.textContent = "You win"
+            
+            restart.className = "rejouer"
+            finish.className = "fini"
+            restart.textContent = "Rejouer"
+            finish.textContent = "stop"
+            document.querySelector('.win').after(restart)
+            document.querySelector('.win').after(finish)
+            
+            // console.log
+            // alert("partie terminé")
         }
-    }, 2000);
+    }, 1000);
 }
-
-// si le array arrive a 2 element je le vide
-// if(array.length == 2){
-//     console.log("ok",array.length)
-//     array.splice(0,2)
-// }
-// si les point son egal a ma liste de personnage j'arrete la partie
+restart.addEventListener("click", () =>{
+    location.reload()
+})
