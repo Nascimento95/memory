@@ -23,6 +23,9 @@ body{
 .body-card{
     height: 100vh;
 }
+.timerone{
+    font-size: 100px;
+}
 
 .cart1{
     background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
@@ -91,3 +94,4 @@ body{
     border-radius: 20px;
     background-color: red;
 }
+

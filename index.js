@@ -37,9 +37,10 @@ let characters = [
         image: "https://i.skyrock.net/6383/52976383/pics/2142262707_small_1.jpg",
     },
 ]
-let time = 10
+let time = 60
+let myInterval
 if(time > 0){
-    let myInterval = setInterval(() => {
+    myInterval = setInterval(() => {
         time -= 1
         timers.textContent = time
         if(time <= 0){
@@ -262,16 +263,11 @@ function condition( cart1 , cart2){
 
     setTimeout(() => {
         if(point == characters.length){
+            clearInterval(myInterval)
             win.textContent = "You win"
-            
             restart.className = "rejouer"
-            finish.className = "fini"
             restart.textContent = "Rejouer"
-            finish.textContent = "stop"
             document.querySelector('.win').after(restart)
-            document.querySelector('.win').after(finish)
-            
-            // console.log
             // alert("partie terminé")
         }
     }, 1000);
