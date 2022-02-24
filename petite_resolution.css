@@ -39,5 +39,16 @@
     .rejouer{
         margin-left: 40px;
     }
-    
+    .ok{
+        display: flex;
+    }
+    .cart{
+        width: 20px;
+    }
+    .cart1{
+        width:10px
+    }
+    .cart2{
+        width: 10px;
+    }
 }
