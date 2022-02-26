@@ -50,7 +50,7 @@ buttonTimer.addEventListener('click', () => {
     infoJeux.remove()
     buttonMode.remove()
     allcart.style.visibility = 'visible'
-    let time = 30
+    let time = 25
     let myInterval
     
     if(time > 0){

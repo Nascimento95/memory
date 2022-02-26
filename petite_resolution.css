@@ -1,6 +1,7 @@
 @media all and (max-width: 500px) {
     body{
         background-image: url('image/backgroundDragonball.svg');
+        background-repeat: no-repeat;
         height: 100vh;
     }
     .title{
@@ -42,13 +43,55 @@
     .ok{
         display: flex;
     }
-    .cart{
+    /* .cart{
         width: 20px;
-    }
+    } */
     .cart1{
-        width:10px
+        width:80px
     }
     .cart2{
-        width: 10px;
+        width: 80px;
+    }
+    .cart3{
+        background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+        background-size: cover;
+        height: 250px;
+        border-radius: 20px;
+        width: 80px;
+    }
+    .cart4{
+        background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+        background-size: cover;
+        height: 250px;
+        border-radius: 20px;
+        width: 80px;
+    }
+    .cart5{
+        background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+        background-size: cover;
+        height: 250px;
+        border-radius: 20px;
+        width: 80px;
+    }
+    .cart6{
+        background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+        background-size: cover;
+        height: 250px;
+        border-radius: 20px;
+        width: 80px;
+    }
+    .cart7{
+        background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+        background-size: cover;
+        height: 250px;
+        border-radius: 20px;
+        width: 80px;
+    }
+    .cart8{
+        background-image: url(https://thumbs.coleka.com/media/rubrique/201803/28/cartes-de-collection-dragon-ball-super-jcc_300x300.webp);
+        background-size: cover;
+        height: 250px;
+        border-radius: 20px;
+        width: 80px;
     }
 }
